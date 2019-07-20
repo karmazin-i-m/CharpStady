@@ -10,7 +10,7 @@ namespace Class_Zad_1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Привет мир!");
             //ConsoleColor color = ConsoleColor.Black;
 
             for (ConsoleColor color = ConsoleColor.Black; color < ConsoleColor.White; color++)
