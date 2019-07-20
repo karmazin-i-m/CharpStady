@@ -10,6 +10,7 @@ namespace Class_Zad_1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Привет мир!");
             char key;
             Intro();
             RailStation railStation = RailStation.Instance();
