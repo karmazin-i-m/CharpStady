@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassWork_Zad_2", "ClassWor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassWork_Zad_3", "ClassWork_Zad_3\ClassWork_Zad_3.csproj", "{6DD28875-A111-44AF-98D4-0321D9891047}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassWork_Zad_4", "ClassWork_Zad_4\ClassWork_Zad_4.csproj", "{EB298FD0-4D75-4B7F-88F6-70F7BCFC2653}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6DD28875-A111-44AF-98D4-0321D9891047}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DD28875-A111-44AF-98D4-0321D9891047}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DD28875-A111-44AF-98D4-0321D9891047}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB298FD0-4D75-4B7F-88F6-70F7BCFC2653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB298FD0-4D75-4B7F-88F6-70F7BCFC2653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB298FD0-4D75-4B7F-88F6-70F7BCFC2653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB298FD0-4D75-4B7F-88F6-70F7BCFC2653}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
