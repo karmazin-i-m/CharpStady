@@ -14,7 +14,11 @@ namespace HomeWork_Zad_1
             Calculate add = (x, y) => x + y;
             Calculate sub = (x, y) => x - y;
             Calculate mul = (x, y) => x * y;
-            Calculate dif = (x, y) => x / y;
+            Calculate dif = (x, y) =>
+            {
+                if (x / y != 0) return x / y;
+                return 0;
+            };
 
             while (true)
             {
@@ -28,7 +32,7 @@ namespace HomeWork_Zad_1
                 switch (operand)
                 {
                     case '+':
-                        Console.WriteLine(add(x,y));
+                        Console.WriteLine(add(x, y));
                         break;
                     case '-':
                         Console.WriteLine(sub(x, y));
