@@ -67,7 +67,7 @@ namespace Class_Zad_2
             {
                 for (int i = 0; i < count - 1; i++)
                 {
-                    array[i] = array[i + 1];
+                    array[index] = array[i + 1];
                 }
                 array[count] = default(T);
                 count--;
