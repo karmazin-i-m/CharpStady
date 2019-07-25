@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace ClassWork_Zad_1
 {
     class ListCollection<T> : IList<T>
-        where T : new()
     {
         private const int defaultSizeArray = 4;
 
@@ -25,7 +24,7 @@ namespace ClassWork_Zad_1
             }
             set
             {
-                array[Count] = value;
+                array[index] = value;
             }
         }
 
@@ -38,6 +37,7 @@ namespace ClassWork_Zad_1
             if (count < array.Length)
             {
                 array[Count] = item;
+                count++;
             }
             else
             {
@@ -49,6 +49,7 @@ namespace ClassWork_Zad_1
         public void Clear()
         {
             array = new T[defaultSizeArray];
+            count = 0;
         }
 
         public int IndexOf(T item)
@@ -65,9 +66,7 @@ namespace ClassWork_Zad_1
 
         public bool Remove(T item)
         {
-            int index = IndexOf(item);
-            if (index == -1) return false;
-            return true;
+            return RemoveAt(IndexOf(item));
         }
 
         public void Resize(int capacity)
@@ -91,15 +90,40 @@ namespace ClassWork_Zad_1
             return newArray;
         }
 
-        public bool RemuveAt(int index)
+        public bool RemoveAt(int index)
         {
-            if (!(index <= 0 && index >= Count)) return false;
-            for (int i = index; i < count - 1; i++)
+            if (index >= 0 && index < count)
             {
-                array[i] = array[i + 1];
+                for (int i = index; i < count - 1; i++)
+                {
+                    array[i] = array[i + 1];
+                }
+                array[count] = default(T);
+                count--;
+                return true;
             }
-            count--;
-            return true;
+            return false;
+        }
+
+        public bool Contains(T item)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (array[i].Equals(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public override string ToString()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(array[i]); 
+            }
+            return "";
         }
     }
 }
