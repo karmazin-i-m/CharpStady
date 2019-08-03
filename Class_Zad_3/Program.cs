@@ -28,6 +28,7 @@ namespace Class_Zad_3
                 {
                     Console.WriteLine("Выхожу...");
                     System.Threading.Thread.Sleep(2000);
+                    return;
                 }
                 else Console.WriteLine("Такого элемента нет в базе.");
             }

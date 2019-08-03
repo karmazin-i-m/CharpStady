@@ -14,11 +14,27 @@ namespace Class_Zad_4
 
             Console.WriteLine("Введите несколько строк на разных языках.");
 
-            Console.WriteLine("");
+            List.Add("asfsddsh");
+            List.Add("ы");
+            List.Add("і");
 
             for (int i = 0; i < 5; i++)
             {
                 List.Add(Console.ReadLine());
+            }
+
+            for (int i = 0; i < List.Count; i++)
+            {
+                Console.Write("Строка ");
+                Console.Write(List[i]+" на ");
+                if (IsLatin(List[i]) == true)
+                {
+                    Console.WriteLine("английском языке.");
+                }
+                else
+                {
+                    Console.WriteLine("русском языке.");
+                }
             }
 
             Console.ReadKey();
@@ -26,13 +42,10 @@ namespace Class_Zad_4
 
         static bool IsLatin(string str)
         {
-            char[] array = str.ToCharArray();
+            str.ToLower();
+            char[] array = str.ToArray();
 
-            for (int i = 0; i < array.Length; i++)
-            {
-                //if(array[i])
-            }
-            return default;
+            return (array[0] <= '\x00ff');
         }
     }
 }
