@@ -13,7 +13,13 @@ namespace ClassWork_Zad_1
             Human human = new Human();
             human.JumpE += Jump;
 
-            human.Move();
+            for (int i = 0; i < 100; i++)
+            {
+                human.Move();
+                Console.WriteLine();
+                System.Threading.Thread.Sleep(1000);
+            }
+
             Console.ReadKey();
         }
 
@@ -29,7 +35,19 @@ namespace ClassWork_Zad_1
 
     class Human
     {
-        public event EventJump JumpE = null;
+        private EventJump jumpE = null;
+
+        public event EventJump JumpE
+        {
+            add
+            {
+                jumpE += value;
+            }
+            remove
+            {
+                jumpE -= value;
+            }
+        }
         Random random = new Random(DateTime.Now.Millisecond);
 
         public void Move()
@@ -38,7 +56,7 @@ namespace ClassWork_Zad_1
             {
                 if (i == random.Next(10))
                 {
-                    JumpE.Invoke();
+                    jumpE.Invoke();
                 }
                 Console.Write("Move ");
             }
