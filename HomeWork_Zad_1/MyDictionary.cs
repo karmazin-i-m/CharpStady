@@ -29,7 +29,7 @@
                     default:
                         throw new System.ArgumentOutOfRangeException(nameof(index));
                 }
-                
+
             }
 
         }
@@ -45,30 +45,49 @@
 
         }
 
-        private int IndexOfKey<T>(T value)
+        public object GetValue(TKey key, int index)
         {
-            if (value is TKey)
+            if (!IsThere(key)) return new System.ArgumentOutOfRangeException();
+
+            if (index == 1)
             {
-                for (int i = 0; i < keys.Length; i++)
-                {
-                    if (keys[i].Equals(value))
-                    {
-                        return i;
-                    }
-                }
-                return -1;
+                return values1[IndexOfKey(key)];
             }
-            else
+            else if (index == 2)
             {
-                for (int i = 0; i < values1.Length; i++)
-                {
-                    if (keys[i].Equals(value))
-                    {
-                        return i;
-                    }
-                }
-                return -1;
+                return values2[IndexOfKey(key)];
             }
+            else throw new System.ArgumentOutOfRangeException();
+        }
+
+        private int IndexOfKey(TKey key)
+        {
+            if (!IsThere(key)) return -1;
+
+            for (int i = 0; i < keys.Length; i++)
+            {
+                if (keys[i].Equals(key))
+                {
+                    return i;
+                }
+            }
+            return -1;
+
+        }
+
+        public bool Remuve(TKey key)
+        {
+
+            if (!IsThere(key)) return false;
+
+            for (int i = IndexOfKey(key); i < keys.Length-1; i++)
+            {
+                keys[i] = keys[i + 1];
+                values1[i] = values1[i + 1];
+                values2[i] = values2[i + 1];
+            }
+            count--;
+            return true;
         }
 
         public void Add(TKey key, TValue1 value1, TValue2 value2)
@@ -77,6 +96,7 @@
             {
                 keys[count] = key;
                 values1[count] = value1;
+                values2[count] = value2;
                 count++;
             }
             else
@@ -108,9 +128,18 @@
         {
             for (int i = 0; i < count; i++)
             {
-                System.Console.WriteLine($"key: {keys[i]} = {values1[i]} :value1 value2: {values2[i]}");
+                System.Console.WriteLine($"key: {keys[i]}; value1: {values1[i]}; value2: {values2[i]}");
             }
             return "";
+        }
+
+        private bool IsThere(TKey key)
+        {
+            for (int i = 0; i < keys.Length; i++)
+            {
+                if (keys[i].Equals(key)) return true;
+            }
+            return false;
         }
     }
 }
