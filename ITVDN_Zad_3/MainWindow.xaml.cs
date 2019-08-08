@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace ITVDN_Zad_3
 {
     /// <summary>
@@ -20,11 +21,12 @@ namespace ITVDN_Zad_3
     /// </summary>
     public partial class View : Window
     {
-
+        Presenter presenter = null;
+        
         public View()
         {
             InitializeComponent();
-            new Presenter(this);
+            presenter = new Presenter(this);
         }
 
         public event Action StartClik = null;
@@ -53,11 +55,6 @@ namespace ITVDN_Zad_3
             {
                 ResetClik.Invoke();
             }
-        }
-
-        public void ShowTime(long time)
-        {
-            this.Label.Content = time;
         }
     }
 }
