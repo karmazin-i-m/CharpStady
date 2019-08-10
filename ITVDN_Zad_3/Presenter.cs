@@ -43,13 +43,13 @@ namespace ITVDN_Zad_3
         private void Reset()
         {
             model.TimerReset();
-            view.Label.Content = "";
+            view.Label.Text = "0:0:0";
             Timer.Stop();
         }
 
         public void SetTime(object sender, System.EventArgs e)
         {
-            view.Label.Content = $"{model.GetHours()}:{model.GetMinutes()}:{model.GetSeconds()}";
+            view.Label.Text = $"{model.GetHours()}:{model.GetMinutes()}:{model.GetSeconds()}";
         }
     }
 }
