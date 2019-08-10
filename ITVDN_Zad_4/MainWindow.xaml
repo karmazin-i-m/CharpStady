@@ -1,0 +1,29 @@
+﻿<Window x:Class="ITVDN_Zad_4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ITVDN_Zad_4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="424" Width="327">
+    <Grid Margin="0,0,0,0">
+        <TextBox Name="TextBox" HorizontalAlignment="Center" Height="75" Margin="0,0,89,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" TextAlignment="Right" BorderThickness="0" FontSize="35"/>
+        <Button Name="ClearEnty"  Content="CE" HorizontalAlignment="Left" Margin="5,80,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="ClearEnty_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Clear" Content="C" HorizontalAlignment="Left" Margin="80,80,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Clear_Click" Background="White" BorderThickness="0"/>
+        <Button Name="BackSpace" Content="X|" HorizontalAlignment="Left" Margin="155,80,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="BackSpace_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Division" Content="/" HorizontalAlignment="Left" Margin="230,80,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Division_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Seven" Content="7" HorizontalAlignment="Left" Margin="5,155,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Seven_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Eight" Content="8" HorizontalAlignment="Left" Margin="80,155,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Eight_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Nine" Content="9" HorizontalAlignment="Left" Margin="155,155,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Nine_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Multiply" Content="X" HorizontalAlignment="Left" Margin="230,155,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Multiply_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Four" Content="4" HorizontalAlignment="Left" Margin="5,230,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Four_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Five" Content="5" HorizontalAlignment="Left" Margin="80,230,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Five_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Six" Content="6" HorizontalAlignment="Left" Margin="155,230,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Six_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Subtraction" Content="-" HorizontalAlignment="Left" Margin="230,230,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Subtraction_Click" Background="White" BorderThickness="0"/>
+        <Button Name="One" Content="1" HorizontalAlignment="Left" Margin="5,305,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="One_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Two" Content="2" HorizontalAlignment="Left" Margin="80,305,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Two_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Three" Content="3" HorizontalAlignment="Left" Margin="155,305,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Three_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Pluse" Content="+" HorizontalAlignment="Left" Margin="230,305,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Pluse_Click" Background="White" BorderThickness="0"/>
+        <Button Name="Res" Content="=" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Top" Width="75" Height="75" FontSize="40" Click="Result_Click" Background="White" BorderThickness="0"/>
+    </Grid>
+</Window>
