@@ -12,7 +12,7 @@ namespace ITVDN_Zad_3
     {
         Model model = null;
         View view = null;
-        public DispatcherTimer Timer;
+        DispatcherTimer Timer;
 
         public Presenter(View view)
         {
@@ -47,14 +47,9 @@ namespace ITVDN_Zad_3
             Timer.Stop();
         }
 
-        public long GetTime()
-        {
-            return model.GetMilliseconds();
-        }
-
         public void SetTime(object sender, System.EventArgs e)
         {
-            view.Label.Content = GetTime();
+            view.Label.Content = $"{model.GetHours()}:{model.GetMinutes()}:{model.GetSeconds()}";
         }
     }
 }

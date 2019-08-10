@@ -27,7 +27,19 @@ namespace ITVDN_Zad_3
         }
         public long GetMilliseconds()
         {
-            return timer.ElapsedMilliseconds;
+            return timer.Elapsed.Milliseconds;
+        }
+        public long GetSeconds()
+        {
+            return timer.Elapsed.Seconds;
+        }
+        public long GetHours()
+        {
+            return timer.Elapsed.Hours;
+        }
+        public long GetMinutes()
+        {
+            return timer.Elapsed.Minutes;
         }
     }
 }
