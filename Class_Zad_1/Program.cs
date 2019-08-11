@@ -23,7 +23,7 @@ namespace Class_Zad_1
             Thread.Sleep(1000);
             Console.WriteLine(threadWorker.Result);
 
-            threadWorker = new ThreadWorker<int>(() => 0);
+            threadWorker = new ThreadWorker<int>(() => throw new DivideByZeroException());
             try
             {
                 threadWorker.Start();

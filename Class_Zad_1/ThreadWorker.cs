@@ -36,23 +36,23 @@ namespace Class_Zad_1
 
         public void Start()
         {
-            Thread thread = new Thread(() => result = funk.Invoke());
-            try
-            {
-                thread.Start();
-                //throw new DivideByZeroException();
-                IsSuccess = true;
-            }
-            catch (Exception e)
-            {
-                Exception = e;
-                IsSuccess = false;
-            }
-            finally
-            {
-                IsCompleted = true;
-            }
-
+            Thread thread = new Thread(() => {
+                try
+                {
+                    result = funk.Invoke();
+                    IsSuccess = true;
+                }
+                catch (Exception e)
+                {
+                    Exception = e;
+                    IsSuccess = false;
+                }
+                finally
+                {
+                    IsCompleted = true;
+                }
+            });
+            thread.Start();
         }
 
         private void Wait()
