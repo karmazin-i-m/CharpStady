@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System;
 
 namespace Class_Zad_1
 {
@@ -13,26 +14,27 @@ namespace Class_Zad_1
 
             ThreadWorker<int> threadWorker = new ThreadWorker<int>(Count<int>);
 
+            Console.WriteLine("Проверка на работу внутренней задержки при неготовности: ");
             threadWorker.Start();
-            System.Console.WriteLine(threadWorker.Result);
+            Console.WriteLine(threadWorker.Result);
 
+            Console.WriteLine("Проверка на работу внутренней задержки при готовности: ");
             threadWorker.Start();
-            System.Threading.Thread.Sleep(1000);
-            System.Console.WriteLine(threadWorker.Result);
+            Thread.Sleep(1000);
+            Console.WriteLine(threadWorker.Result);
 
+            threadWorker = new ThreadWorker<int>(() => 0);
             try
             {
-                ThreadWorker<int> thread = new ThreadWorker<int>(() => {
-                    int res = 0;
-                    return 24/res;
-                    });
-                System.Console.WriteLine(thread.Result);
-            }catch(System.DivideByZeroException e)
+                threadWorker.Start();
+                Console.WriteLine(threadWorker.Result); 
+            }
+            catch(Exception)
             {
-                System.Console.WriteLine("Попытка деления на нуль.");
+                Console.WriteLine("Попытка деления на нуль.");
             }
 
-            System.Console.ReadKey();
+            Console.ReadKey();
         }
 
         
@@ -40,7 +42,7 @@ namespace Class_Zad_1
         static int Count<Tres>()
         {
             int res = 0;
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 res += i;
             }

@@ -5,8 +5,8 @@ namespace Class_Zad_1
 {
     class ThreadWorker<TResult>
     {
-        Func<TResult> funk;
-        TResult result;
+        Func<TResult> funk = null;
+        TResult result = default;
 
         public ThreadWorker(Func<TResult> funk)
         {
@@ -16,28 +16,31 @@ namespace Class_Zad_1
         public bool IsSuccess { get; private set; } = false;
         public Exception Exception { get; private set; } = null;
 
-        public TResult Result {
+        public TResult Result
+        {
             get
             {
                 if (Exception == null)
                 {
-                    if (result != null)
+                    if (!result.Equals(default(TResult)))
                         return result;
-                    else Wait();
-                    return result;
+                    else
+                    {
+                        Wait();
+                        return Result;
+                    }
                 }
                 else throw Exception;
             }
         }
 
         public void Start()
-        { 
+        {
+            Thread thread = new Thread(() => result = funk.Invoke());
             try
             {
-                Thread thread = new Thread(() => {
-                    result = funk.Invoke();
-                });
                 thread.Start();
+                //throw new DivideByZeroException();
                 IsSuccess = true;
             }
             catch (Exception e)
@@ -49,7 +52,7 @@ namespace Class_Zad_1
             {
                 IsCompleted = true;
             }
-            
+
         }
 
         private void Wait()
