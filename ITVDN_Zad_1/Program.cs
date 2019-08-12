@@ -9,21 +9,26 @@ namespace ITVDN_Zad_1
 {
     class Program
     {
-        static Random random = new Random((int)DateTime.Now.Ticks);
+        static int[] number = new int[120];
 
         static void Main(string[] args)
         {
             Matrix matrix = new Matrix();
-            Console.SetBufferSize(120, 30);
+            Console.SetBufferSize(121, 31);
 
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < number.Length; i++)
             {
-                new Thread(() => {
-                        matrix.Print(i*2);
-                }).Start();
+                number[i] = i;
             }
 
+            number.Mix();
 
+            for (int i = 0; i < number.Length-1; i++)
+            {
+                new Thread(() => {
+                        matrix.Print(number[i]);
+                }).Start();
+            }
             Console.ReadKey();
         }
     }

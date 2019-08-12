@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ITVDN_Zad_1
 {
-    class Matrix
+    public class Matrix
     {
         Random random = new Random((int)DateTime.Now.Ticks);
         static readonly object consoleKey = new object();
@@ -88,7 +88,7 @@ namespace ITVDN_Zad_1
                         Console.CursorTop = 0;
                     }
                 }
-                Thread.Sleep(random.Next(20,15000));
+                Thread.Sleep(random.Next(20,200));
             }
         }
 

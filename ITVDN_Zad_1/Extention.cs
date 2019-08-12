@@ -2,7 +2,7 @@
 
 namespace ITVDN_Zad_1
 {
-    static class Extention
+    public static class Extention
     {
         public static void Mix(this char[] array)
         {
