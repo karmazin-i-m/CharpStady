@@ -11,13 +11,14 @@ namespace ITVDN_Zad_1
     {
         static Random random = new Random((int)DateTime.Now.Ticks);
         static char[] array = new char[255];
+        static object loker = new object();
 
         static void Main(string[] args)
         {
-
+            
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = (char)random.Next(255);
+                array[i] = (char)random.Next(127);
             }
 
             for (int i = 0; i < 80; i++)
@@ -33,17 +34,15 @@ namespace ITVDN_Zad_1
         {
             array.Mix();
 
+            lock (loker) { 
             for (int i = 0; i < 5; i++)
             {
                 Console.CursorLeft = ColumNumber;
                 Console.WriteLine(array[i]);
             }
             Console.CursorTop = 0;
-
+            }
         }
-
-        
-
     }
 
     static class Extention
