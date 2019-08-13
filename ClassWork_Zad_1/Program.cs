@@ -13,18 +13,38 @@ namespace ClassWork_Zad_1
             List<int> list = new List<int>();
             Random random = new Random(DateTime.Now.Millisecond);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
-                list.Add(random.Next(0, 100));
+                list.Add(i);
             }
-            Console.WriteLine(list);
+            ShowDetails(list);
 
-            foreach (int element in list)
-            {
-                Console.WriteLine(element);
-            }
+            Console.WriteLine("Содержит ли 5? " + list.Contains(5));
+            Console.WriteLine("Под каким индексом 3? " + list.IndexOf(3));
+
+            list.Insert(3, 999);
+            ShowDetails(list);
+
+            list.Remove(5);
+            Console.WriteLine("Содержит ли 5? " + list.Contains(5));
+            ShowDetails(list);
+
+            list.RemoveAt(list.Count - 1);
+            ShowDetails(list);
+
+
 
             Console.ReadKey();
+        }
+
+        static void ShowDetails<T>(IList<T> list)
+        {
+            foreach (var element in list)
+            {
+                Console.Write(element + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine(new string('_',80));
         }
     }
 }

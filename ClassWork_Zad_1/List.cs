@@ -11,8 +11,9 @@ namespace ClassWork_Zad_1
     {
         private const int defaultSize = 4;
 
-        T[] array = new T[defaultSize];
+        T[] items = new T[defaultSize];
 
+        private IEnumerator<T> enumerator = null;
         private int count = 0;
         private int capacity = defaultSize;
         private T current;
@@ -23,19 +24,22 @@ namespace ClassWork_Zad_1
             {
                 if (index >= 0 && index < count)
                 {
-                    return array[index];
+                    return items[index];
                 }
-                return default;
+                else
+                    throw new IndexOutOfRangeException("Индекс вне диапазона");
             }
             set
             {
                 if (index >= 0 && index < count)
                 {
-                    array[index] = value;
+                    items[index] = value;
                 }
+                else
+                    throw new IndexOutOfRangeException("Индекс вне диапазона");
             }
         }
-        public int Capacity { get => capacity; }
+        public int Capacity { get => items.Length; }
 
         public int Count { get => count; }
 
@@ -43,18 +47,23 @@ namespace ClassWork_Zad_1
 
         private int position = -1;
 
+        public bool IsReadOnly => false;
+
+        public IEnumerator<T> Enumerator { set => enumerator = value; }
+
         object IEnumerator.Current { get => Current; }
 
         public void Add(T item)
         {
             if (count < capacity)
             {
-                array[count] = item;
+                items[count] = item;
                 count++;
             }
             else
             {
-                Resize(capacity * 2);
+                capacity = Capacity * 2;
+                Array.Resize(ref items, capacity);
                 Add(item);
             }
 
@@ -62,76 +71,58 @@ namespace ClassWork_Zad_1
 
         public int IndexOf(T item)
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (array[i].Equals(item)) return i;
+                if (items[i].Equals(item)) return i;
             }
             return -1;
         }
 
-        public bool RemoveAt(int index)
+        public void RemoveAt(int index)
         {
-            if (index >= 0 && index < count)
+            if (index > count && index < 0)
+                throw new ArgumentOutOfRangeException();
+
+            Array.Copy(items, index + 1, items, index, items.Length - index - 1);
+            count--;
+        }
+
+        public bool Remove(T item)
+        {
+            RemoveAt(IndexOf(item));
+            return true;
+        }
+
+        public void Clear()
+        {
+            items = new T[defaultSize];
+            count = 0;
+        }
+
+        public bool Contains(T item)
+        {
+            if (IndexOf(item) != -1)
             {
-                for (int i = 0; i < count - 1; i++)
-                {
-                    array[i] = array[i + 1];
-                }
-                array[count] = default(T);
-                count--;
                 return true;
             }
             return false;
         }
 
-        public bool Remove(T item)
-        {
-            return RemoveAt(IndexOf(item));
-        }
-
-        public void Resize(int newLength)
-        {
-            T[] newArray = new T[newLength];
-            for (int i = 0; i < capacity; i++)
-            {
-                newArray[i] = array[i];
-            }
-            array = newArray;
-            capacity = array.Length;
-        }
-
-        public override string ToString()
-        {
-            for (int i = 0; i < count; i++)
-            {
-                if (i % 10 == 0)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine(new string('-', 80));
-                }
-                Console.Write(array[i] + " | ");
-            }
-            return "";
-        }
-
-        public void Clear()
-        {
-            array = new T[defaultSize];
-        }
-
-        public bool Contains(T item)
-        {
-            throw new NotImplementedException();
-        }
-
         public T[] ToArray()
         {
-            throw new NotImplementedException();
+            T[] newArray = new T[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                newArray[i] = items[i];
+            }
+
+            return newArray;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            return this;
+            return enumerator != null ? enumerator : this;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -141,15 +132,15 @@ namespace ClassWork_Zad_1
 
         public void Dispose()
         {
-            
+
         }
 
         public bool MoveNext()
         {
-			position++;
+            position++;
             if (position < Count)
             {
-                current = array[position]; 
+                current = items[position];
                 return true;
             }
             else
@@ -162,6 +153,23 @@ namespace ClassWork_Zad_1
         public void Reset()
         {
             position = -1;
+        }
+
+        public void Insert(int index, T item)
+        {
+            if (index > count && index < 0)
+                throw new ArgumentOutOfRangeException();
+            if (count == capacity)
+            {
+                capacity = Capacity * 2;
+                Array.Resize(ref items, capacity);
+            }
+            Array.Copy(items, index, items, index + 1, Count - index + 1);
+            this[index] = item;                                                             
+            count++;                                                                
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            Array.Copy(items, 0, array, arrayIndex, items.Length);
         }
     }
 }
