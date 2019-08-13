@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassWork_Zad_1
 {
-    class List<T> : IList<T>, IEnumerable<T>, IEnumerator<T>
+    public class List<T> : IList<T>, IEnumerable<T>, IEnumerator<T>
     {
         private const int defaultSize = 4;
 
@@ -165,8 +165,10 @@ namespace ClassWork_Zad_1
                 Array.Resize(ref items, capacity);
             }
             Array.Copy(items, index, items, index + 1, Count - index + 1);
-            this[index] = item;                                                             
-            count++;                                                                
+            this[index] = item;
+            count++;
+        }
+
         public void CopyTo(T[] array, int arrayIndex)
         {
             Array.Copy(items, 0, array, arrayIndex, items.Length);
