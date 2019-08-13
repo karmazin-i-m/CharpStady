@@ -11,21 +11,33 @@ namespace Class_Zad_3
     {
         static void Main(string[] args)
         {
+            OuterElementList<InnerElementList<int>> list = new OuterElementList<InnerElementList<int>>(5);
+
+            foreach (var outElement in list)
+            {
+                foreach (var item in outElement)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                Console.WriteLine(new string('-', 80));
+            }
+
+            Console.ReadKey();
         }
     }
 
     class InnerElementList<T> : IEnumerator<T>, IEnumerable<T>, IEnumerator
-        where T : 
+        where T : struct
     {
         private const int defaultSize = 4;
-        T[] items = ;
+        T[] items;
         private int position = -1;
         T current = default;
 
-        public InnerElementList(int amount)
+        public InnerElementList()
         {
-            items = new T[amount];
-            for (int i = 0; i < amount; i++)
+            items = new T[5];
+            for (int i = 0; i < 5; i++)
             {
                 items[i] = new T();
             }
@@ -37,7 +49,6 @@ namespace Class_Zad_3
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -69,6 +80,7 @@ namespace Class_Zad_3
     }
 
     class OuterElementList<T> : IEnumerator<T>, IEnumerable<T>, IEnumerator
+        where T : new()
     {
         private const int defaultSize = 4;
         T[] items = new T[defaultSize];
@@ -76,13 +88,22 @@ namespace Class_Zad_3
         private int position = -1;
         T current = default;
 
+        public OuterElementList(int amount)
+        {
+            items = new T[amount];
+            for (int i = 0; i < amount; i++)
+            {
+                items[i] = new T();
+            }
+        }
+
         object IEnumerator.Current => current;
 
         public T Current => current;
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+
         }
 
         public IEnumerator<T> GetEnumerator()
