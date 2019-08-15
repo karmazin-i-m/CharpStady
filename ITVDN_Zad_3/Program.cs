@@ -23,6 +23,8 @@ namespace ITVDN_Zad_3
 
                 prices[i] = new Price(prod, marcet, cost);
             }
+            
+            Array.Sort(prices, new Comparison<Worker>((a,b) => a.Name.CompareTo(b.Name)));
 
             Console.Write("Введите название магазина для проверки товара: ");
             string marketName = Console.ReadLine();
