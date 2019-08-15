@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassWork_Zad_2", "ClassWor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITVDN_Zad_2", "ITVDN_Zad_2\ITVDN_Zad_2.csproj", "{8509CAA5-CF7A-44DB-8BCA-A974D7969EC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITVDN_Zad_3", "ITVDN_Zad_3\ITVDN_Zad_3.csproj", "{F5E29C80-EDC2-4D38-A811-A84BBD1E0711}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8509CAA5-CF7A-44DB-8BCA-A974D7969EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8509CAA5-CF7A-44DB-8BCA-A974D7969EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8509CAA5-CF7A-44DB-8BCA-A974D7969EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E29C80-EDC2-4D38-A811-A84BBD1E0711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E29C80-EDC2-4D38-A811-A84BBD1E0711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E29C80-EDC2-4D38-A811-A84BBD1E0711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E29C80-EDC2-4D38-A811-A84BBD1E0711}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
