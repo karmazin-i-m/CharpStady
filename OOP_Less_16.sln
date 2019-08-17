@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassWork_Zad_1", "ClassWor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassWork_Zad_2", "ClassWork_Zad_2\ClassWork_Zad_2.csproj", "{8B1F83E3-D33F-4E24-909F-567DC13292C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassWork_Zad_3", "ClassWork_Zad_3\ClassWork_Zad_3.csproj", "{606304F8-DBB9-4523-AD69-1B338AB6C448}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8B1F83E3-D33F-4E24-909F-567DC13292C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B1F83E3-D33F-4E24-909F-567DC13292C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B1F83E3-D33F-4E24-909F-567DC13292C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{606304F8-DBB9-4523-AD69-1B338AB6C448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{606304F8-DBB9-4523-AD69-1B338AB6C448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{606304F8-DBB9-4523-AD69-1B338AB6C448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{606304F8-DBB9-4523-AD69-1B338AB6C448}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
