@@ -10,33 +10,51 @@ namespace HomeWork_Zad_1
     {
         static void Main(string[] args)
         {
-            Vector vector1 = new Vector(new Point(1,2),new Point(4,8));
-            Vector vector2 = new Vector(new Point(), new Point());
+            Point A = new Point(3, 0);
+            Point B = new Point(1, 2);
+            Point O = new Point(0, 0);
 
-            Vector vector3 = vector1 + vector2;
+            Vector OA = new Vector(O, A);
+            Vector OB = new Vector(O, B);
 
-            Console.WriteLine($"Vector 3: start x={vector3.StartPoint.X}, start y={vector3.StartPoint.Y}");
-            Console.WriteLine($"Vector 3: start x={vector3.FinishPoint.X}, start y={vector3.FinishPoint.Y}");
+            Console.WriteLine($"Vector OA: x={OA.VectorPoint.X}, y={OA.VectorPoint.Y}");
+            Console.WriteLine($"Vector AB: x={OB.VectorPoint.X}, y={OB.VectorPoint.Y}");
+
+            Vector vector = OA + OB;
+            Console.WriteLine($"Vector vector: x={vector.VectorPoint.X}, y={vector.VectorPoint.Y}");
+
+            vector = OA - OB;
+            Console.WriteLine($"Vector vector: x={vector.VectorPoint.X}, y={vector.VectorPoint.Y}");
 
             Console.ReadKey();
         }
     }
     struct Vector
     {
-        Point start;
-        Point finish;
+        private Point start;
+        private Point finish;
+        private Point vector;
         public Vector(Point start, Point finish)
         {
             this.start = start;
             this.finish = finish;
+            this.vector = new Point(finish.X - start.X, finish.Y - start.Y);
         }
-        public Point StartPoint => start;
-        public Point FinishPoint => finish;
+
+        private Vector(Point vector)
+        {
+            this.vector = vector;
+            this.start = default;
+            this.finish = default;
+        }
+        public Point VectorPoint => vector;
         public static Vector operator +(Vector vector1, Vector vector2)
         {
-            Point start = new Point(vector1.start.X + vector2.start.X, vector1.start.Y + vector2.start.Y);
-            Point finish = new Point(vector1.finish.X + vector2.finish.X, vector1.finish.Y + vector2.finish.Y);
-            return new Vector(start,finish);
+            return new Vector(new Point(vector1.VectorPoint.X + vector2.VectorPoint.X, vector1.VectorPoint.Y + vector2.VectorPoint.Y));
+        }
+        public static Vector operator -(Vector vector1, Vector vector2)
+        {
+            return new Vector(new Point(vector1.VectorPoint.X - vector2.VectorPoint.X, vector1.VectorPoint.Y - vector2.VectorPoint.Y));
         }
     }
 
