@@ -10,11 +10,13 @@ namespace ITVDN_Zad_4
     {
         static void Main(string[] args)
         {
-            Date date = new Date(60);
+            Date date = new Date(24,08,1999);
 
-            Date datetest = new Date(1, 1, 0);
+
+            Date datetest = new Date(1);
 
             Console.WriteLine(date+datetest);
+            Console.WriteLine(date + datetest);
             Console.ReadKey();
         }
     }
@@ -164,6 +166,7 @@ namespace ITVDN_Zad_4
                     case Month.December:
                         day -= 31;
                         month = Month.Juanuary;
+                        year++;
                         break;
                 }
             }
@@ -171,7 +174,7 @@ namespace ITVDN_Zad_4
             days = (int)day;
 
             this.year = year;
-            if (month == Month.February && days == 29)
+            if (month == Month.February && (days == 29||days == 30))
             {
                 days -= 28;
                 month = Month.March;
@@ -190,7 +193,7 @@ namespace ITVDN_Zad_4
             if (year < 0 && year > 9999) throw new ArgumentOutOfRangeException();
 
             int days = 0;
-            for (int i = 0; i < year; i++)
+            for (int i = 1; i <= year; i++)
             {
                 days = i % 4 == 0 ? days + 366 : days + 365;
             }
@@ -245,7 +248,7 @@ namespace ITVDN_Zad_4
             return days;
         }
 
-        public static Date operator +(Date date1, Date date2)
+        public static Date operator -(Date date1, Date date2)
         {
             bool isLeap1, isLeap2;
 
@@ -263,6 +266,25 @@ namespace ITVDN_Zad_4
             long days2 = date2.Day + date2.MonthToDays(date2.month, isLeap2) + date2.YearToDays(date2.Year);
 
             return new Date(days1 + days2);
+        }
+        public static Date operator +(Date date1, Date date2)
+        {
+            bool isLeap1, isLeap2;
+
+            if (date1.year != 0)
+                isLeap1 = date1.Year % 4 == 0 ? true : false;
+            else
+                isLeap1 = false;
+
+            if (date2.year != 0)
+                isLeap2 = date2.Year % 4 == 0 ? true : false;
+            else
+                isLeap2 = false;
+
+            long days1 = date1.Day + date1.MonthToDays(date1.month, isLeap1) + date1.YearToDays(date1.Year);
+            long days2 = date2.Day + date2.MonthToDays(date2.month, isLeap2) + date2.YearToDays(date2.Year);
+
+            return new Date(days1 - days2);
         }
         public override string ToString()
         {
