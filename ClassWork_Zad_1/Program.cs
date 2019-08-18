@@ -25,7 +25,7 @@ namespace ClassWork_Zad_1
 
             var age = from e in emploes
                       where e.age >= 25
-                      //orderby e
+                      orderby e.age
                       select e;
 
             var age1 = emploes.Where<Emploe>(t => t.age < 25).Select(t => t).ToList();
