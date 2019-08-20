@@ -2,13 +2,13 @@
 
 namespace ITVDN_Zad_2
 {
-    class Сustomer
+    class Customer
     {
         List<Car> cars = new List<Car>();
         string name;
         int phonenumber;
 
-        public Сustomer(Car car, string name, int phonenumber)
+        public Customer(Car car, string name, int phonenumber)
         {
             this.cars.Add(car);
             this.name = name;
@@ -16,12 +16,18 @@ namespace ITVDN_Zad_2
         }
 
         public List<Car> Cars => cars;
+        public Car AddCar {
+            set
+            {
+                cars.Add(value);
+            }
+        }
         public string Name => name;
         public int PhoneNumber => phonenumber;
 
         public override bool Equals(object obj)
         {
-            return obj is Сustomer сustomer &&
+            return obj is Customer сustomer &&
                    EqualityComparer<List<Car>>.Default.Equals(cars, сustomer.cars) &&
                    name == сustomer.name &&
                    phonenumber == сustomer.phonenumber &&
